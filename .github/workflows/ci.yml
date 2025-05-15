@@ -1,9 +1,9 @@
 name: WeChat MiniProgram Demo CI/CD
 
 on:
-  push:
+  pull_request:
     branches:
-      - feat-ce
+      - master
 jobs:
   upload:
     runs-on: ubuntu-latest
