@@ -1,7 +1,7 @@
 name: WeChat MiniProgram Demo CI/CD
 
 on:
-  push:
+  pull_request:
     branches:
       - feat-ce
 jobs:
