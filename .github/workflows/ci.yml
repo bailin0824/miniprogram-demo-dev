@@ -1,11 +1,9 @@
 name: WeChat MiniProgram Demo CI/CD
 
 on:
-
-  pull_request:
-
+  push:
     branches:
-      - feat-ce
+      - feat-wzy-cs
 jobs:
   upload:
     runs-on: ubuntu-latest
@@ -29,6 +27,4 @@ jobs:
           fi
           mkdir -p ./build
           echo "$WX_PRIVATE_KEY" > ./build/key
-
           echo "$WX_PRIVATE_KEY" | xxd
-
