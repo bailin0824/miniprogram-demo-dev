@@ -13,7 +13,6 @@ console.log('Private key content length:', fs.readFileSync(privateKeyPath).lengt
 // 检查私钥文件是否已存在
 if (!fs.existsSync(privateKeyPath)) {
   console.log("hello word WZY");
-  console.log("hello word WZY");
   const privateKeyContent = process.env.WX_PRIVATE_KEY
   if (!privateKeyContent) {
     throw new Error('未找到私钥内容，请确保已正确配置 GitHub Secrets')
