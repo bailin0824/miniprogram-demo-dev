@@ -7,7 +7,6 @@ on:
 jobs:
   upload:
     runs-on: ubuntu-latest
-    environment: PR_CI
     steps:
       - uses: actions/checkout@v4
         with:
