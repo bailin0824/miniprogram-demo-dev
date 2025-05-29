@@ -31,7 +31,7 @@ jobs:
           mkdir -p ./build
           echo "$WX_PRIVATE_KEY" > ./build/key
           chmod +x ./build/ci.js
-          node ./build/ci.js --skip-key-write
+          node ./build/ci.js
 
 
           
