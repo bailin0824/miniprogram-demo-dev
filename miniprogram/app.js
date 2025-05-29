@@ -6,6 +6,8 @@ App({
 
   onLaunch(opts, data) {
     const that = this
+    console.log("1111111");
+    
     const canIUseSetBackgroundFetchToken = wx.canIUse('setBackgroundFetchToken')
     if (canIUseSetBackgroundFetchToken) {
       wx.setBackgroundFetchToken({
