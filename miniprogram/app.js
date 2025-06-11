@@ -3,7 +3,7 @@ const config = require('./config')
 const themeListeners = []
 global.isDemo = true
 App({
-console.log('App Launch111');
+console.log('App Launch11');
 
   onLaunch(opts, data) {
     const that = this

@@ -19,6 +19,9 @@ jobs:
       - name: Check changed files
         id: changed-files
         uses: tj-actions/changed-files@v44
+        with:
+          files: |
+           miniprogram/**/*
 
       - name: Setup NodeJS
         uses: actions/setup-node@v4
