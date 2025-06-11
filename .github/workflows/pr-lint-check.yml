@@ -1,7 +1,7 @@
 name: PR Lint Check
 
 on:
-  pull_request:
+  push:
     branches:
       - feat-pr-lint
 
