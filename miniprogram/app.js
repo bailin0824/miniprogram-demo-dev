@@ -19,7 +19,7 @@ App({
           console.log('读取预拉取数据成功', res)
         },
         fail() {
-          console.log('读取预拉取数据失败') 
+          console.log('读取预拉取数据失败')
           wx.showToast({
             title: '无缓存数据',
             icon: 'none'
