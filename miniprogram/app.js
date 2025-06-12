@@ -3,7 +3,7 @@ const config = require('./config')
 const themeListeners = []
 global.isDemo = true
 App({
-console.log('App Launch11');
+console.log('App Launch');
 
   onLaunch(opts, data) {
     const that = this
@@ -21,7 +21,7 @@ console.log('App Launch11');
           console.log('读取预拉取数据成功', res)
         },
         fail() {
-          console.log('读取预拉取数据失败')
+          console.log('读取预拉取数据失败') 
           wx.showToast({
             title: '无缓存数据',
             icon: 'none'

@@ -1,38 +1,40 @@
-name: PR Lint Check
+name: ESLint Check Changed Files
 
 on:
-  push:
-    branches:
-      - feat-pr-lint
-
-concurrency:
-  group: style-${{ github.head_ref || github.run_id }}
-  cancel-in-progress: true
+  push:  # 每次推送代码时触发
+    branches: [ feat-pr-lint ]  # 针对这些分支的推送触发
 
 jobs:
-  lint:
+  eslint-changed:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # 获取完整提交历史，用于比较变更
 
-      - name: Check changed files
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'  # 使用 Node.js 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Get changed files
         id: changed-files
         uses: tj-actions/changed-files@v44
         with:
-          files: |
-           miniprogram/**/*
+          since_last_remote_commit: 'true'  # 只检查上次推送后的变更
 
-      - name: Setup NodeJS
-        uses: actions/setup-node@v4
-        if: steps.changed-files.outputs.any_changed == 'true'
-        with:
-          node-version: 20
+      - name: Filter JavaScript files
+        id: filter-js
+        run: |
+          # 只筛选出.js/.ts/.jsx/.tsx文件
+          changed_js_files=$(echo '${{ steps.changed-files.outputs.all_changed_files }}' | grep -E '\.(js|ts|jsx|tsx)$' || true)
+          echo "changed_js_files=${changed_js_files}" >> $GITHUB_OUTPUT
 
-      - name: Web dependencies
-        if: steps.changed-files.outputs.any_changed == 'true'
-        run: npm install
-
-      - name: Web style check
-        if: steps.changed-files.outputs.any_changed == 'true'
-        run: npm run lint
+      - name: Run ESLint on changed JS files
+        if: ${{ steps.filter-js.outputs.changed_js_files != '' }}
+        run: |
+          echo "Changed JS files: ${{ steps.filter-js.outputs.changed_js_files }}"
+          npx eslint ${{ steps.filter-js.outputs.changed_js_files }}
