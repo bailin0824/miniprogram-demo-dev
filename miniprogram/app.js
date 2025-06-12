@@ -3,8 +3,6 @@ const config = require('./config')
 const themeListeners = []
 global.isDemo = true
 App({
-console.log('App Launch');
-
   onLaunch(opts, data) {
     const that = this
     const canIUseSetBackgroundFetchToken = wx.canIUse('setBackgroundFetchToken')
