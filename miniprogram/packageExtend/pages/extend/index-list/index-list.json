@@ -1,8 +1,0 @@
-{
-  "usingComponents": {
-    "mp-indexList": "../../../components/index-list/index-list"
-  },
-  "renderer": "webview",
-"navigationBarTitleText": "index-list"
-
-}

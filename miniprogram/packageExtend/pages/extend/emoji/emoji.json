@@ -1,9 +1,0 @@
-{
-  "disableScroll": true,
-  "renderer": "webview",
-"navigationBarTitleText": "emoji",
-  "usingComponents": {
-    "mp-emoji": "../../../components/emoji/emoji"
-
-  }
-}
